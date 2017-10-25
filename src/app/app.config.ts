@@ -8,7 +8,6 @@ export let appConfig = {
     header: {
         getHeader: (value) => new Headers({'Content-Type': `${value}; charset=utf-8`}),
         json: 'application/json',
-        token: 'x-token'
     },
     nameToken: 'x-token',
     loginWarningMsg: 'This system is owned by EPAM Systems. If you are not authorized to access this system, exit immediately. ' +

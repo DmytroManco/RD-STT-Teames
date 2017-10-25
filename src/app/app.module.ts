@@ -34,6 +34,7 @@ import { CoreModule } from './core';
 import { HttpService } from './core';
 import { SharedModule } from './shared';
 import { FeaturesModule } from './features';
+import { HomeGuard } from './core';
 
 // Application wide providers
 const APP_PROVIDERS = [
@@ -77,7 +78,8 @@ type StoreType = {
   providers: [
     ENV_PROVIDERS,
     APP_PROVIDERS,
-    HttpService
+    HttpService,
+    HomeGuard
   ]
 })
 export class AppModule {

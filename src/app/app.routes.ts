@@ -1,5 +1,4 @@
 import { Routes } from '@angular/router';
-
 import { HomeRoutes, LoginRoutes, TestPageRoutes } from './features'
 
 export const ROUTES: Routes = [

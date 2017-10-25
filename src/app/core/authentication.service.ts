@@ -1,4 +1,4 @@
-import { Injectable } from "@angular/core";
+import { Injectable } from '@angular/core';
 
 import { HttpService } from './http.service';
 import { LoginForm } from '../shared/models';
@@ -17,22 +17,22 @@ export class AuthenticationService {
     }
 
     login(value: LoginForm) {
-        this.httpService.postUser(this.toJson(value), this.pathLogin)
-            .subscribe(
-                (res) => {
-                    sessionStorage.setItem(appConfig.nameToken, res.headers.get(appConfig.nameToken));
-                    // this.httpService.TOKEN = res.headers.get(appConfig.nameToken);
-                    this.token = res.headers.get(appConfig.nameToken);
-                    this.role = res.json();
+        return this.httpService.postUser(this.toJson(value), this.pathLogin)
+            .do(
+                (response) => {
+                    sessionStorage.setItem(appConfig.nameToken, response.headers.get(appConfig.nameToken));
+                    this.token = response.headers.get(appConfig.nameToken);
+                    this.role = response.json();
                     this.status = true;
                 }
             );
     }
 
     logout() {
-        this.httpService.getLogout(this.pathLogout).subscribe(
-            (res) => {
-                console.log(res);
+        this.httpService.getLogout(this.pathLogout)
+            .do(
+            (response) => {
+                console.log(response);
             },
             (error) => {
                 console.log(error);

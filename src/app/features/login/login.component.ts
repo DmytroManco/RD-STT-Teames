@@ -1,7 +1,9 @@
-import { Component, ViewEncapsulation } from '@angular/core';
+import { Component, ViewEncapsulation, OnDestroy } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { AuthenticationService } from '../../core';
 import { appConfig } from '../../app.config';
+import { Subscription } from 'rxjs';
 
 @Component({
     selector: 'tt-login',
@@ -9,17 +11,25 @@ import { appConfig } from '../../app.config';
     styleUrls: ['login.component.scss'],
     encapsulation: ViewEncapsulation.None
 })
-export class LoginComponent {
+export class LoginComponent implements OnDestroy {
     private warningMsg: string = appConfig.loginWarningMsg;
+    subscription: Subscription;
 
-    constructor(private authenticationService: AuthenticationService) {}
-
-    submitLoginForm(value) {
-        this.authenticationService.login(value);
+    constructor(private authenticationService: AuthenticationService, private router: Router) {
     }
 
-    logout () {
-        this.authenticationService.logout();
+    ngOnDestroy() {
+        if (this.subscription) {
+            this.subscription.unsubscribe()
+        }
+    }
+
+    submitLoginForm(value) {
+        this.subscription = this.authenticationService.login(value).subscribe((res) => this.router.navigate(['/home']));
+    }
+
+    logout() {
+        // this.subscription.add(this.authenticationService.logout().subscribe());
     }
 
     epamLogin() {

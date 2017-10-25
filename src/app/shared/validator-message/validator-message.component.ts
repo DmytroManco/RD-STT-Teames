@@ -11,6 +11,7 @@ export class ValidatorMessageComponent {
 
      public get validatorMessages() {
         const field = this.field;
+         console.log(this.field);
         if (!field || !field.errors) {
             return false;
         }
@@ -22,25 +23,25 @@ export class ValidatorMessageComponent {
             url: 'Field should contain valid url',
             pattern: 'Field does not match to pattern'
         };
-
-        if (field.errors.hasOwnProperty('custom')) {
-            config['custom'] = (typeof field.errors.custom === 'string'
-            && field.errors.custom.length) ?
-                field.errors.custom :
-                'Does not match to format';
-        }
-
-        if (field.errors.hasOwnProperty('minlength')) {
-            config['minlength'] = `Minimum length ${ field.errors.minlength.requiredLength}`;
-        }
-        if (field.errors.hasOwnProperty('maxlength')) {
-            config['maxlength'] = `Maximum length ${ field.errors.maxlength.requiredLength}`;
-        }
-
-        Object.keys(field.errors).forEach((error: string) => {
-            errors.push(config[error]);
-        });
-
-        return errors;
+        //
+        // if (field.errors.hasOwnProperty('custom')) {
+        //     config['custom'] = (typeof field.errors.custom === 'string'
+        //     && field.errors.custom.length) ?
+        //         field.errors.custom :
+        //         'Does not match to format';
+        // }
+        //
+        // if (field.errors.hasOwnProperty('minlength')) {
+        //     config['minlength'] = `Minimum length ${ field.errors.minlength.requiredLength}`;
+        // }
+        // if (field.errors.hasOwnProperty('maxlength')) {
+        //     config['maxlength'] = `Maximum length ${ field.errors.maxlength.requiredLength}`;
+        // }
+        //
+        // Object.keys(field.errors).forEach((error: string) => {
+        //     errors.push(config[error]);
+        // });
+        //
+        // return errors;
     }
 }
