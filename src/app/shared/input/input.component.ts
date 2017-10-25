@@ -10,7 +10,7 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
     selector: 'tt-input',
     templateUrl: 'input.component.html',
     styleUrls: ['input.component.scss'],
-    encapsulation: ViewEncapsulation.Native,
+    encapsulation: ViewEncapsulation.None,
     providers: [{
         provide: NG_VALUE_ACCESSOR,
         useExisting: forwardRef(() => InputComponent),
@@ -19,12 +19,14 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 })
 export class InputComponent implements ControlValueAccessor {
     inputValue: string;
-    onChange = (_: any) => {
-    };
+
+    onChange = (_: any) => {};
     onTouched = () => { };
+
     @Input() inputType: string = 'text';
+    @Input() inputName: string;
     @Input() inputClass: string;
-    @Input() inputIconClass: string;
+    @Input() inputPlaceholder: string;
 
     writeValue(value: string): void {
         this.inputValue = value;
@@ -43,6 +45,6 @@ export class InputComponent implements ControlValueAccessor {
     }
 
     blurHandler() {
-    this.onTouched();
+        this.onTouched();
     }
 }

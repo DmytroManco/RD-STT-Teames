@@ -15,6 +15,7 @@ import {
 export class ButtonComponent {
   @Input() type: string;
   @Input() className: string;
+  @Input() disabled: boolean;
 
   @Output() public onclickHandler: EventEmitter<Event> = new EventEmitter();
 

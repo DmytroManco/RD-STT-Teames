@@ -67,6 +67,11 @@
       &:hover{
         background-color: $color-dark_green;
       }
+
+      &:active, &:focus{
+        background: $color-green_lime;
+        border-color: $color-green_lime;
+      }
     }
 
     .login-form__info{

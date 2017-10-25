@@ -12,8 +12,7 @@ import { appConfig } from '../../app.config';
 export class LoginComponent {
     private warningMsg: string = appConfig.loginWarningMsg;
 
-    constructor(private authenticationService: AuthenticationService) {
-    }
+    constructor(private authenticationService: AuthenticationService) {}
 
     submitLoginForm(value) {
         this.authenticationService.login(value);

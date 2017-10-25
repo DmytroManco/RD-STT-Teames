@@ -5,3 +5,4 @@ export * from './login-layout';
 export * from './input';
 export * from './validator-message';
 export * from './button';
+export * from './modal';

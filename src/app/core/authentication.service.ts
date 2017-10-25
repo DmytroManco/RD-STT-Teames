@@ -40,9 +40,6 @@ export class AuthenticationService {
         )
     }
 
-
-
-
     toJson(data: LoginForm): string {
         return JSON.stringify(data);
     }

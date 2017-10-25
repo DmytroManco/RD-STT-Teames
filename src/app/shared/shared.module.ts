@@ -5,6 +5,7 @@ import { InputModule } from './input/input.module';
 import { LoginLayoutModule } from './login-layout';
 import { ValidatorMessageModule } from './validator-message';
 import { ButtonModule } from './button';
+import { ModalModule } from './modal';
 
 @NgModule({
     imports: [
@@ -13,7 +14,8 @@ import { ButtonModule } from './button';
       InputModule,
       LoginLayoutModule,
       ValidatorMessageModule,
-      ButtonModule
+      ButtonModule,
+      ModalModule
     ],
     exports: [
       HeaderModule,
@@ -21,7 +23,8 @@ import { ButtonModule } from './button';
       InputModule,
       LoginLayoutModule,
       ValidatorMessageModule,
-      ButtonModule
+      ButtonModule,
+      ModalModule
   ]
 })
 export class SharedModule {

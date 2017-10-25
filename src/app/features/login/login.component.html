@@ -1,67 +1,78 @@
-<div class="container">
+<tt-login-layout>
+  <div class="container">
     <div class="row">
-        <form class="login-form text-center" ref-loginForm="ngForm" novalidate="true" (submit)="submitLoginForm(loginForm.value)">
-            <div class="login-form__header">
-                <h2 class="login-form__heading">Students Testing Tool <sup>0.0.1</sup></h2>
+      <form class="login-form text-center" ref-loginForm="ngForm" novalidate="true" (submit)="submitLoginForm(loginForm.value)">
+        <div class="login-form__header">
+          <h2 class="login-form__heading">Students Testing Tool <sup>0.0.1</sup></h2>
+        </div>
+        <div class="login-form__body">
+          <div class="uui-login-panel login-form__epam-login">
+            <div class="login-panel-body">
+              <div class="login-panel-section">
+                <div class="epam-login">
+                  <tt-button [className]="'uui-button large raspberry'" [type]="'button'" (onclickHandler)="epamLogin($event)">
+                    <i class="fa fa-angle-left"></i>
+                    EPAM Login
+                    <i class="fa fa-angle-right"></i>
+                  </tt-button>
+                </div>
+                <div class="login-separator login-form__separator">
+                  <div class="border">
+                    <span></span>
+                  </div>
+                  <div class="text">
+                    <span>or</span>
+                  </div>
+                  <div class="border">
+                    <span></span>
+                  </div>
+                </div>
+              </div>
             </div>
-            <div class="login-form__body">
-                <div class="uui-login-panel login-form__epam-login">
-                    <div class="login-panel-body">
-                        <div class="login-panel-section">
-                            <div class="epam-login">
-                                <tt-button [className]="'uui-button large raspberry'" [type]="'button'" (onclickHandler)="epamLogin($event)">
-                                  <i class="fa fa-angle-left"></i>
-                                     EPAM Login
-                                  <i class="fa fa-angle-right"></i>
-                                </tt-button>
-                            </div>
-                            <div class="login-separator login-form__separator">
-                                <div class="border">
-                                    <span></span>
-                                </div>
-                                <div class="text">
-                                    <span>or</span>
-                                </div>
-                                <div class="border">
-                                    <span></span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="login-form__inputs inputs">
-                    <tt-input [inputType]="'email'"
-                              [inputIconClass]="'fa-envelope'"
-                              ngModel
-                              name="email"
-                              email="true"
-                              required>
-                    </tt-input>
-                    <div *ngIf="loginForm.controls.email?.invalid && loginForm.controls.email.touched" class="help-block">User email is required</div>
-                    <!--<validator-message class="help-block"-->
-                                       <!--[field]="loginForm.controls.email">-->
-                    <!--</validator-message>-->
-                    <tt-input [inputType]="'password'"
-                              [inputIconClass]="'fa-lock'"
-                              ngModel
-                              name="password"
-                              required>
-                    </tt-input>
-                    <div *ngIf="loginForm.controls.password?.invalid && loginForm.controls.password.touched" class="help-block">User password is required</div>
-                </div>
-                <div class="uui-login-panel login-form__epam-login">
-                    <div class="login-panel-body">
-                        <div class="login-panel-section">
-                            <div class="epam-login">
-                              <tt-button [className]="'uui-button large raspberry uui-button--green'">Login</tt-button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="login-form__info">
-                    {{warningMsg}}
-                </div>
+          </div>
+
+          <div class="login-form__inputs inputs">
+            <div class="uui-input-group input-login default">
+              <tt-input [inputType]="'email'"
+                        [inputClass]="'uui-form-element inputs__login'"
+                        [inputPlaceholder]="'email'"
+                        ngModel
+                        [name]="'email'"
+                        email="true"
+                        required>
+              </tt-input>
+              <i class="fa fa-envelope inputs__login inputs__icon" aria-hidden="true"></i>
             </div>
-        </form>
+
+            <div *ngIf="loginForm.controls.email?.invalid && loginForm.controls.email.touched" class="help-block">User email is required</div>
+
+            <div class="uui-input-group input-login default">
+              <tt-input [inputType]="'password'"
+                        [inputClass]="'uui-form-element inputs__login'"
+                        [inputPlaceholder]="'password'"
+                        ngModel
+                        [name]="'password'"
+                        required>
+              </tt-input>
+              <i class="fa fa-lock inputs__login inputs__icon" aria-hidden="true"></i>
+            </div>
+            <div *ngIf="loginForm.controls.password?.invalid && loginForm.controls.password.touched" class="help-block">User password is required</div>
+          </div>
+
+          <div class="uui-login-panel login-form__epam-login">
+            <div class="login-panel-body">
+              <div class="login-panel-section">
+                <div class="epam-login">
+                  <tt-button [className]="'uui-button large raspberry uui-button--green'" [disabled]="loginForm.invalid">Login</tt-button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="login-form__info">
+            {{warningMsg}}
+          </div>
+        </div>
+      </form>
     </div>
-</div>
+  </div>
+</tt-login-layout>

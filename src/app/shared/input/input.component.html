@@ -1,9 +1,10 @@
-<div class="uui-input-group input-login default">
-  <input type="{{inputType}}"
-         [(ngModel)]="inputValue"
-         (input)="inputHandler()"
-         (blur)="blurHandler()"
-         class="uui-form-element inputs__login"/>
-  <i class="fa {{inputIconClass}} inputs__login inputs__icon"
-     aria-hidden="true"></i>
-</div>
+<input [type]="inputType"
+       [(ngModel)]="inputValue"
+       (input)="inputHandler()"
+       [name]="inputName"
+       (blur)="blurHandler()"
+       [placeholder]="inputPlaceholder"
+       [className]="inputClass"/>
+
+<!--
+[placeholder]="inputPlaceholder"-->
